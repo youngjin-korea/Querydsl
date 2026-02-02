@@ -34,3 +34,34 @@
 # Querydsl 문법
 
 ## 기본 문법
+- JPAQueryFactory를 생성할 때 제공하는 EntityManager에 여러 쓰래드가 동시에 접근해도 트랜잭션 마다 별도의 영속성 컨텍스트를 제공하여 동시성 문제 없음.
+
+
+- Q클래스 인스턴스를 사용하는 2가지 방법
+    
+
+    QMember qMember = new QMember("m"); //별칭 직접 지정
+    QMember qMember = QMember.member; // 기본 인스턴스 사용
+
+기본 인스턴스를 static import와 함께 사용
+import static study.querydsl.entity.QMember.*;
+
+## JPQL이 제공하는 모든 검색 조건 제공
+    member.username.eq("member1") // username = 'member1'
+    member.username.ne("member1") // username != 'member1'
+    member.username.eq("member1").not() // username != 'member1'
+    
+    member.username.isNotNull()
+    
+    member.age.in(10, 20) // age in (10, 20)
+    member.age.notIn(10, 20) // age not in (10, 20)
+    member.age.between(10, 20) // age between 10 and 20
+
+    member.age.goe(30) // age >= 30
+    member.age.gt(30) // age > 30
+    member.age.loe(30) // age <= 30
+    member.age.lt(30) // age < 30
+
+    member.username.like("member%") //like 검색
+    member.username.contains("member") // like '%member%'
+    member.username.startsWith("member") // like 'member%'
