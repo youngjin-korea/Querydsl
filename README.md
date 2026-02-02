@@ -30,3 +30,7 @@
 ## application.yml 설정
 - show_sql : 옵션은 System.out에 하이버네이트 실행 SQL을 남긴다.
 - org.hibernate.SQL: 옵션은 logger를 통해 하이버네이트 실행 SQL을 남긴다.
+
+# Querydsl 문법
+
+## 기본 문법
